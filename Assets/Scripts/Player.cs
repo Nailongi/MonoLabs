@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -19,11 +17,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && (JumpNo<NumberOfJumps))
-        {
-            JumpNo++;
-            RB.AddForce(new Vector2(0,JumpForce),ForceMode2D.Force) ;
-        }
+        Jump2();
 
         
     }
@@ -33,6 +27,28 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag=="Floor")
         {
             JumpNo = 0;
+        }
+    }
+
+    //Con este salto al apretar dos veces rápido el salto es más alto
+    //Y al apretar dos veces lente el salto es más controlado
+    private void Jump1()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow) && (JumpNo < NumberOfJumps))
+        {
+            JumpNo++;
+            RB.AddForce(new Vector2(0.0f, JumpForce), ForceMode2D.Impulse);
+        }
+    }
+
+    //Con este salto el cambio de la velocidad es inmediato, 
+    //esto asegura que el primer y segundo salto sean de la misma fuerza
+    private void Jump2()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow) && (JumpNo < NumberOfJumps))
+        {
+            JumpNo++;
+            RB.velocity = new Vector2(0.0f, JumpForce);
         }
     }
 }
