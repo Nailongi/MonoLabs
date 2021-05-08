@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public Renderer Background;
     private float BgVelocity=0.15f;
+
     void Start()
     {
         

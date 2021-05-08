@@ -283,12 +283,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 1.1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &205510117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,6 +302,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JumpForce: 6
+  DownForce: 4
+  IsGoingDownFast: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,7 +399,7 @@ GameObject:
   - component: {fileID: 1118378171}
   - component: {fileID: 1118378170}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
