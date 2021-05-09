@@ -17,4 +17,6 @@ public class GameManager : MonoBehaviour
     {
         Background.material.mainTextureOffset += BgVelocity * new Vector2(1, 0) * Time.deltaTime;
     }
+
+
 }
