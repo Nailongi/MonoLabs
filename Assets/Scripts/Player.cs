@@ -8,6 +8,10 @@ public class Player : MonoBehaviour
     public float JumpForce;
     public float DownForce;
     public bool IsGoingDownFast;
+
+    public Animator animator; //variable que se utiliza para cambiar el estado de la animacion
+    private float ySpeed; //variable que se utiliza mientras para saber si el mono asqueroso esta saltando o cayendo
+
     //private bool IsOnGround;
 
     private Rigidbody2D RB;
@@ -16,6 +20,8 @@ public class Player : MonoBehaviour
     {
         RB = GetComponent<Rigidbody2D>();
         IsGoingDownFast = false;
+
+        ySpeed = 0; //solo declaro para que no esté vacío
     }
 
     // Update is called once per frame
@@ -24,6 +30,14 @@ public class Player : MonoBehaviour
         Jump2();
         DownFast();
 
+        //OnTheGround
+        #region OnTheGround
+        ySpeed = RB.velocity.y; //obtengo velocidad en y
+        if (ySpeed != 0)
+            animator.SetBool("OnTheGround", true); //si la velocidad en y es distinta de 0 entonces se esta moviendo en Y, por tanto saltando
+        else
+            animator.SetBool("OnTheGround", false); //se asume que está en tierra o alcanzó el pinaculo mas alto en un instante
+        #endregion
     }
 
     //Esta función se encarga de informar si "Player" a tocado suelo y cambiar las variables asociadas
