@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 35230434}
   - component: {fileID: 35230433}
   - component: {fileID: 35230435}
+  - component: {fileID: 35230436}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -182,6 +183,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 6676812908815774522, guid: 6ae88210816fdbb4ca60af538fdb3990, type: 3}
+  - {fileID: 8660911732663693435, guid: b46b6c63ba6b66049a4bb3094c839bc1, type: 3}
+--- !u!114 &35230436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35230432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc122f9649995c44bdd10e5583b5230, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _arbolPixel1: {fileID: 4268553245459371873, guid: 7b1328e1b4465a94eb350cf475531646, type: 3}
+  _arbolPixel2: {fileID: 8927954201919586942, guid: 7eb018e19364e0a4299ffbc35cf0d596, type: 3}
+  _nubePixel1: {fileID: 6322843943857802564, guid: 6681480c55e691748905c14710c8afc9, type: 3}
 --- !u!1 &205510112
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,7 +734,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065742288}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 11.25, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
