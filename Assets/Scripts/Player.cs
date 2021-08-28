@@ -1,10 +1,17 @@
+using System.Diagnostics;
+using System.Collections.Generic;
 using UnityEngine;
+
+//Indice de funciones
+//-Jump 1 y 2
+//-DownFast
+//-BackInicialPos 1 y 2
 
 public class Player : MonoBehaviour
 {
     readonly int NumberOfJumps = 2; //Número máximo de saltos
 
-    private int JumpNo = 0; //Indica cuantos saltos haz realizado, se reinicia al tocar el suelo o la cabeza de un enemido (lo ultimo aun no se ha implementado)
+    public int JumpNo = 0; //Indica cuantos saltos haz realizado, se reinicia al tocar el suelo o la cabeza de un enemido (lo ultimo aun no se ha implementado)
     public float JumpForce;
     public float DownForce;
     public bool IsGoingDownFast;
@@ -12,9 +19,13 @@ public class Player : MonoBehaviour
     public Animator animator; //variable que se utiliza para cambiar el estado de la animacion
     private float ySpeed; //variable que se utiliza mientras para saber si el mono asqueroso esta saltando o cayendo
 
+
+    private float InicialPosX = -2f; //Posición del mono por defecto en X
+    public float backSpeed=1f; //Velocidad a la que vuelve el mono a su posición inicial en X
+
     //private bool IsOnGround;
 
-    private Rigidbody2D RB;
+    public Rigidbody2D RB;
 
     void Start()
     {
@@ -29,6 +40,8 @@ public class Player : MonoBehaviour
     {
         Jump2();
         DownFast();
+        BackInicialPos();
+
 
         //OnTheGround
         #region OnTheGround
@@ -84,6 +97,27 @@ public class Player : MonoBehaviour
         {
             IsGoingDownFast = true;
             RB.velocity = new Vector2(0.0f, -DownForce);
+        }
+    }
+
+    private void BackInicialPos()
+    {
+        if ((transform.position.x < (InicialPosX-0.05)) && (JumpNo == 0))
+        {
+            transform.position = new Vector2(transform.position.x + backSpeed * Time.deltaTime, transform.position.y);
+        }
+        else if ((transform.position.x > (InicialPosX+0.05)) && (JumpNo == 0))
+        {
+            transform.position = new Vector2(transform.position.x - backSpeed * Time.deltaTime, transform.position.y);
+        }
+
+    }
+
+    private void BackInicialPos2()
+    {
+        if ((transform.position.x < InicialPosX) && (JumpNo == 0))
+        {
+            RB.velocity = new Vector2(backSpeed, RB.velocity.y);
         }
     }
 }
